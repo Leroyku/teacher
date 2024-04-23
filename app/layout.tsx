@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 
-const montserrat = Montserrat({ subsets: ['cyrillic'] });
+const montserrat = Montserrat({ subsets: ['cyrillic'], display: 'swap' });
+const overdoze = localFont({
+  src: './fonts/overdozesans.otf',
+  variable: '--font-overdoze',
+});
 
-export const metadata: Metadata = {
-  title: 'try',
-  description: '123',
-};
+import Header from './components/header/header';
 
 export default function RootLayout({
   children,
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={montserrat.className}>{children}</body>
+      <body className={`${overdoze.variable} ${montserrat.className}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
