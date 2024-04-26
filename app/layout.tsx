@@ -1,8 +1,12 @@
-import { Montserrat } from 'next/font/google';
+import { Rubik } from 'next/font/google';
 import localFont from 'next/font/local';
-import './globals.css';
+import './globals.scss';
 
-const montserrat = Montserrat({ subsets: ['cyrillic'], display: 'swap' });
+const rubik = Rubik({ subsets: ['cyrillic'], display: 'swap' });
+const rubik_one = localFont({
+  src: './fonts/RubikOne-Regular.ttf',
+  variable: '--font-title',
+});
 const overdoze = localFont({
   src: './fonts/overdozesans.otf',
   variable: '--font-overdoze',
@@ -17,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${overdoze.variable} ${montserrat.className}`}>
+      <body className={`${overdoze.variable} ${rubik_one.variable} ${rubik.className}`}>
         <Header />
         {children}
       </body>
